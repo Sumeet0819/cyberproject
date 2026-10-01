@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:5000/api
+
+### Health Check
+GET {{baseUrl}}/health
+Content-Type: application/json
+
+### Register User
+# Note: Password must be at least 8 chars, contain 1 lowercase, 1 uppercase, and 1 number
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "Password123",
+  "name": "Test User"
+}
+
+### Login User
+# Automatically sets the 'auth_token' cookie upon successful login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "Password123"
+}
+
+### Get Current User (Me)
+# Requires 'auth_token' cookie to be sent (REST Client extensions usually handle this automatically after login)
+GET {{baseUrl}}/auth/me
+Content-Type: application/json
+
+### Logout
+# Clears the 'auth_token' cookie
+POST {{baseUrl}}/auth/logout
+Content-Type: application/json

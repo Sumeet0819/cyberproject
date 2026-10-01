@@ -1,0 +1,25 @@
+### Create a new Website
+POST http://localhost:5000/api/websites
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "domain": "https://example.com"
+}
+
+### Get all Websites
+GET http://localhost:5000/api/websites
+Authorization: Bearer {{token}}
+
+### Get a single Website by ID (replace :id with actual ID from previous request)
+GET http://localhost:5000/api/websites/:id
+Authorization: Bearer {{token}}
+
+### Test Validation Error (Invalid domain)
+POST http://localhost:5000/api/websites
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "domain": "not-a-domain"
+}
